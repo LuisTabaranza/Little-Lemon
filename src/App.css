@@ -1,38 +1,204 @@
-.App {
-  text-align: center;
+/* --- 1. FONTS IMPORT & VARIABLES --- */
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght=400;500;700;800&family=Markazi+Text:wght@400;500&display=swap');
+
+:root {
+  --primary-green: #495E57;
+  --primary-yellow: #F4CE14;
+  --secondary-orange: #EE9972;
+  --secondary-peach: #FBDABB;
+  --highlight-light: #EDEFEE;
+  --highlight-dark: #333333;
+
+  --font-heading: 'Markazi Text', serif;
+  --font-body: 'Karla', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* --- 2. GLOBAL RESET STYLES --- */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  background-color: #ffffff;
+  color: var(--highlight-dark);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Global Typography Rules */
+h1, h2, h3, h4 {
+  margin: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* --- 3. REUSABLE CONTAINER LAYER --- */
+.nav-container, .hero-container, .footer-container {
+  max-width: 860px; 
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* --- 4. NAVIGATION ELEMENT LAYOUT --- */
+.navbar {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 30px 0; 
+}
+
+.nav-container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.logo-box {
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo {
+  height: 40px;
+  width: auto;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--highlight-dark);
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--primary-green);
+}
+
+/* --- 5. HERO SECTION LAYOUT (CLEAN TRANSFORM OVERLAP) --- */
+.hero-section {
+  background-color: var(--primary-green);
+  width: 100%;
+  padding: 30px 0 0 0;
+  margin-bottom: 90px; /* Space underneath so the offset breakout doesn't overlap text below */
+  height: 285px;
+  position: relative;
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr; 
+  gap: 30px;
+  /* This locks the top of the image to perfectly match the top of the H1 text! */
+  align-items: flex-start; 
+}
+
+.hero-content {
+  padding-bottom: 0;
+}
+
+.hero-content h1 {
+  font-family: var(--font-heading);
+  color: var(--primary-yellow);
+  font-size: 56px; 
+  font-weight: 500;
+  line-height: 1;
+}
+
+.hero-content h2 {
+  font-family: var(--font-heading);
+  color: #ffffff;
+  font-size: 36px; 
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+.hero-content p {
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  max-width: 380px;
+  line-height: 1.4;
+  margin: 0 0 25px 0;
+}
+
+.cta-button {
+  background-color: var(--primary-yellow);
+  color: var(--highlight-dark);
+  border: none;
+  padding: 10px 24px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 15px;
+  border-radius: 12px; 
+  cursor: pointer;
+  transition: transform 0.1s, background-color 0.2s;
+}
+
+.cta-button:active {
+  transform: scale(0.96);
+}
+
+/* --- THE BREAKOUT IMAGE MECHANICS --- */
+img{
+display:block;
+max-width:100%;
+height:auto;
+}
+
+.hero-image-wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.hero-img {
+  width: 100%;
+  max-width: 340px; 
+  height: 350px; /* Slightly taller to give you that grand hero look */
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  /* Notice we completely removed the transform line! */
+}
+/* --- 6. FOOTER STYLING --- */
+.footer-section {
+  background-color: var(--highlight-dark);
+  padding: 40px 0;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-column h4 {
+  font-family: var(--font-heading);
+  color: var(--secondary-peach);
+  font-size: 22px;
+  margin: 0 0 16px 0;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column p, .footer-column a {
+  font-family: var(--font-body);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 8px 0;
+  display: block;
 }
