@@ -1,0 +1,82 @@
+.chicago-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  gap: 50px;
+}
+
+.chicago-text {
+  flex: 1;
+}
+
+.chicago-text h2 {
+  font-size: 3rem;
+  color: #F4CE14; /* Little Lemon Yellow */
+  margin: 0;
+}
+
+.chicago-text h3 {
+  font-size: 2rem;
+  color: #333333;
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+
+.chicago-text p {
+  color: #495E57; /* Dark Green */
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Image Overlap Layout */
+.chicago-images {
+  flex: 1;
+  position: relative;
+  height: 350px;
+}
+
+.chicago-img-1,
+.chicago-img-2 {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.chicago-img-1 {
+  top: 0;
+  right: 0;
+  z-index: 2; /* Puts this image on top */
+}
+
+.chicago-img-2 {
+  bottom: 0;
+  left: 20px;
+  z-index: 1; /* Puts this image underneath */
+}
+
+/* Make it responsive for smaller screens */
+@media (max-width: 768px) {
+  .chicago-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .chicago-images {
+    width: 100%;
+    margin-top: 40px;
+  }
+  
+  .chicago-img-1 {
+    right: 10%;
+  }
+  
+  .chicago-img-2 {
+    left: 10%;
+  }
+}

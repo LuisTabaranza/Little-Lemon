@@ -1,0 +1,106 @@
+.specials-container {
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.specials-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.specials-header h2 {
+  font-size: 2.5rem;
+  color: #495E57; /* Little Lemon Dark Green */
+  margin: 0;
+}
+
+.online-menu-btn {
+  background-color: #F4CE14; /* Little Lemon Yellow */
+  color: #333333;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.online-menu-btn:hover {
+  background-color: #DDBC12;
+}
+
+/* Responsive Grid Layout */
+.specials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+/* Card Styling */
+.special-card {
+  background-color: #EDEFEE; /* Light Gray Background */
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.special-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.card-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.card-title-row h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #333333;
+}
+
+.card-price {
+  color: #EE9972; /* Peach Accent */
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.card-description {
+  color: #495E57;
+  line-height: 1.5;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.delivery-btn {
+  background: none;
+  border: none;
+  color: #333333;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.delivery-btn:hover {
+  color: #F4CE14;
+}
