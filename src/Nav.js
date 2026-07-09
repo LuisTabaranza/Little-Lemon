@@ -14,8 +14,8 @@ function Nav() {
         <ul className="nav-links">
           <li><Link to="/">HOME</Link></li>
           <li><a href="/#about">ABOUT</a></li>
-          <li><a href="#menu">MENU</a></li>
-          <li><Link to="/reservations">RESERVATIONS</Link></li>
+          <li><a href="/#menu">MENU</a></li>
+          <li><Link to="/booking">RESERVATIONS</Link></li>
           <li><Link to="/order">ORDER ONLINE</Link></li>
           <li><Link to="/login">LOGIN</Link></li>
         </ul>

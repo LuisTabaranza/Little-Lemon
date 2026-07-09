@@ -33,7 +33,7 @@ h1, h2, h3, h4 {
 
 /* --- 3. REUSABLE CONTAINER LAYER --- */
 .nav-container, .hero-container, .footer-container {
-  max-width: 860px; 
+  max-width: 1050px; /* 👈 Changed from 860px to exactly match your other sections! */
   width: 100%;
   margin: 0 auto;
   padding: 0 20px;

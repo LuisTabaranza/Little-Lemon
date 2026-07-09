@@ -28,7 +28,7 @@ const menuItems = [
 
 function Specials() {
   return (
-    <section className="specials-container">
+    <section className="specials-container" id="menu">
       <div className="specials-header">
         <h2>This Weeks Specials!</h2>
         <button className="online-menu-btn">Online Menu</button>

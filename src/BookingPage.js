@@ -1,11 +1,16 @@
 import React from 'react';
+import BookingForm from './BookingForm';
 
-function BookingPage() {
+// Catching the props passed down from Main.js
+function BookingPage({ availableTimes, dispatch }) {
   return (
-    <section style={{ padding: '40px 20px', textAlign: 'center' }}>
-      <h2>Reserve a Table</h2>
-      <p>Booking form will go here.</p>
-    </section>
+    <div style={{ padding: '60px 20px', textAlign: 'center' }}>
+      <h1 style={{ color: '#495E57', fontSize: '2.5rem' }}>Reserve a Table</h1>
+      <p style={{ color: '#333333' }}>Please fill out the form below to secure your booking at Little Lemon.</p>
+      
+      {/* Passing the props further down into the BookingForm */}
+      <BookingForm availableTimes={availableTimes} dispatch={dispatch} />
+    </div>
   );
 }
 

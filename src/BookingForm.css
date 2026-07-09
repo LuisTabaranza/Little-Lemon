@@ -1,0 +1,140 @@
+/* Brand Colors and Base Variables */
+:root {
+  --primary-green: #495E57;
+  --primary-yellow: #F4CE14;
+  --secondary-peach: #EE9972;
+  --light-gray: #EDEFEE;
+  --dark-gray: #333333;
+}
+
+.booking-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  background-color: var(--light-gray);
+  min-height: 80vh;
+  font-family: 'Karla', sans-serif;
+}
+
+/* The Form Card */
+.booking-form-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+.booking-form-card h2 {
+  color: var(--primary-green);
+  text-align: center;
+  margin-bottom: 24px;
+  font-family: 'Markazi Text', serif;
+  font-size: 2.5rem;
+}
+
+/* Input Fields */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--primary-green);
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.form-group input,
+.form-group select {
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-green);
+  background-color: white;
+}
+
+/* Submit Button */
+.submit-btn {
+  background-color: var(--primary-yellow);
+  color: var(--dark-gray);
+  border: none;
+  padding: 16px;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.submit-btn:hover {
+  background-color: #e3be12;
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+/* Reservations Table Styles */
+.reservations-container {
+  margin-top: 40px;
+  width: 100%;
+  max-width: 600px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.reservations-container h3 {
+  color: var(--primary-green);
+  text-align: center;
+  margin-bottom: 16px;
+  font-family: 'Markazi Text', serif;
+  font-size: 2rem;
+}
+
+.reservations-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.reservations-table th {
+  background-color: var(--primary-green);
+  color: white;
+  padding: 12px;
+  text-align: left;
+}
+
+.reservations-table th:first-child {
+  border-top-left-radius: 8px;
+}
+
+.reservations-table th:last-child {
+  border-top-right-radius: 8px;
+}
+
+.reservations-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  color: var(--dark-gray);
+}
+
+.reservations-table tr:hover {
+  background-color: #f9f9f9;
+}
