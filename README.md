@@ -20,4 +20,4 @@ A responsive React web application built for Little Lemon Restaurant. This appli
 
 1. **Clone the repository:**
    ```bash
-   git clone <your-github-repo-url>
+   git clone https://github.com/LuisTabaranza/Little-Lemon.git
