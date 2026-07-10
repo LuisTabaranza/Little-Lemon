@@ -33,7 +33,7 @@ h1, h2, h3, h4 {
 
 /* --- 3. REUSABLE CONTAINER LAYER --- */
 .nav-container, .hero-container, .footer-container {
-  max-width: 1050px; /* 👈 Changed from 860px to exactly match your other sections! */
+  max-width: 1050px; 
   width: 100%;
   margin: 0 auto;
   padding: 0 20px;
@@ -89,7 +89,7 @@ h1, h2, h3, h4 {
   background-color: var(--primary-green);
   width: 100%;
   padding: 30px 0 0 0;
-  margin-bottom: 90px; /* Space underneath so the offset breakout doesn't overlap text below */
+  margin-bottom: 90px; 
   height: 285px;
   position: relative;
 }
@@ -98,7 +98,6 @@ h1, h2, h3, h4 {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr; 
   gap: 30px;
-  /* This locks the top of the image to perfectly match the top of the H1 text! */
   align-items: flex-start; 
 }
 
@@ -164,7 +163,7 @@ height:auto;
 .hero-img {
   width: 100%;
   max-width: 340px; 
-  height: 350px; /* Slightly taller to give you that grand hero look */
+  height: 350px; 
   object-fit: cover;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
@@ -172,7 +171,6 @@ height:auto;
   top: 0;
   right: 0;
   z-index: 10;
-  /* Notice we completely removed the transform line! */
 }
 /* --- 6. FOOTER STYLING --- */
 .footer-section {
