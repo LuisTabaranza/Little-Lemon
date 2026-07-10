@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './BookingForm.css'; // Import the new stylesheet!
+import './BookingForm.css';
 
 function BookingForm({ availableTimes, dispatch, submitForm }) {
   const [date, setDate] = useState('');
@@ -11,6 +11,18 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
     const savedBookings = localStorage.getItem('bookings');
     return savedBookings ? JSON.parse(savedBookings) : [];
   });
+
+  const today = new Date().toISOString().split('T')[0];
+
+  const isFormValid = () => {
+    return (
+      date !== '' &&
+      time !== '' &&
+      guests >= 1 &&
+      guests <= 10 &&
+      occasion !== ''
+    );
+  };
 
   const handleDateChange = (e) => {
     const selectedDate = e.target.value;
@@ -35,12 +47,14 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
         <h2>Reserve a Table</h2>
         <form onSubmit={handleSubmit}>
           
+          {/* STEP 3: HTML htmlFor perfectly maps to input id */}
           <div className="form-group">
             <label htmlFor="res-date">Choose Date</label>
             <input 
               type="date" 
               id="res-date"
               value={date}
+              min={today}
               onChange={handleDateChange}
               required
               aria-required="true"
@@ -53,6 +67,8 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
               id="res-time"
               value={time}
               onChange={(e) => setTime(e.target.value)}
+              required
+              aria-required="true"
             >
               {(availableTimes || []).map((timeOption) => (
                 <option key={timeOption} value={timeOption}>
@@ -83,6 +99,8 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
               id="occasion"
               value={occasion}
               onChange={(e) => setOccasion(e.target.value)}
+              required
+              aria-required="true"
             >
               <option value="Birthday">Birthday</option>
               <option value="Anniversary">Anniversary</option>
@@ -91,7 +109,14 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
             </select>
           </div>
 
-          <button type="submit" className="submit-btn" aria-label="Submit Reservation">
+          {/* STEP 2: Added exact aria-label="On Click" requested by the prompt */}
+          <button 
+            type="submit" 
+            className="submit-btn" 
+            aria-label="On Click"
+            disabled={!isFormValid()}
+            style={{ opacity: isFormValid() ? 1 : 0.5, cursor: isFormValid() ? 'pointer' : 'not-allowed' }}
+          >
             Confirm Reservation
           </button>
         </form>

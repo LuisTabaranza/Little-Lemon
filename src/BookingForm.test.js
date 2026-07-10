@@ -23,11 +23,15 @@ test('Allows the user to submit the BookingForm', () => {
         <BookingForm availableTimes={availableTimes} dispatch={mockDispatch} submitForm={mockSubmit} />
     );
     
-    // Find the button directly by its text string to trigger the submit sequence
+    // 1. FILL OUT THE FORM: We must add a valid date to enable the submit button!
+    const dateInput = screen.getByLabelText("Choose Date");
+    fireEvent.change(dateInput, { target: { value: '2026-10-10' } });
+    
+    // 2. CLICK THE BUTTON
     const submitButton = screen.getByText("Confirm Reservation");
     fireEvent.click(submitButton);
     
-    // Assert that the submitForm prop handler execution path was called successfully
+    // 3. ASSERTION
     expect(mockSubmit).toHaveBeenCalled();
 });
 
@@ -37,17 +41,21 @@ test('Writes reservation data to localStorage on form submission', () => {
     const mockDispatch = jest.fn();
     const mockSubmit = jest.fn();
 
-    // Spy on localStorage.setItem
     const setItemSpy = jest.spyOn(Storage.prototype, 'setItem');
 
     render(
         <BookingForm availableTimes={availableTimes} dispatch={mockDispatch} submitForm={mockSubmit} />
     );
 
+    // 1. FILL OUT THE FORM: We must add a valid date to enable the submit button!
+    const dateInput = screen.getByLabelText("Choose Date");
+    fireEvent.change(dateInput, { target: { value: '2026-10-10' } });
+
+    // 2. CLICK THE BUTTON
     const submitButton = screen.getByText("Confirm Reservation");
     fireEvent.click(submitButton);
 
-    // Verify localStorage.setItem was triggered with the bookings key
+    // 3. ASSERTION
     expect(setItemSpy).toHaveBeenCalledWith('bookings', expect.any(String));
     
     setItemSpy.mockRestore();
@@ -72,4 +80,65 @@ test('Reads initial booking data from localStorage on initialization', () => {
     expect(tableCell).toBeInTheDocument();
 
     getItemSpy.mockRestore();
+});
+
+// Test 5: HTML5 Validation Attributes
+test('Applies correct HTML5 validation attributes to input fields', () => {
+    const mockDispatch = jest.fn();
+    const mockSubmit = jest.fn();
+    render(<BookingForm availableTimes={["17:00", "18:00"]} dispatch={mockDispatch} submitForm={mockSubmit} />);
+
+    // 1. Date Input
+    const dateInput = screen.getByLabelText("Choose Date");
+    expect(dateInput).toHaveAttribute('required');
+    const today = new Date().toISOString().split('T')[0];
+    expect(dateInput).toHaveAttribute('min', today);
+
+    // 2. Time Select
+    const timeSelect = screen.getByLabelText("Choose Time");
+    expect(timeSelect).toHaveAttribute('required');
+
+    // 3. Guests Input
+    const guestsInput = screen.getByLabelText("Number of Guests");
+    expect(guestsInput).toHaveAttribute('required');
+    expect(guestsInput).toHaveAttribute('min', '1');
+    expect(guestsInput).toHaveAttribute('max', '10');
+
+    // 4. Occasion Select
+    const occasionSelect = screen.getByLabelText("Occasion");
+    expect(occasionSelect).toHaveAttribute('required');
+});
+
+// Test 6: React Validation - Invalid State
+test('Submit button is disabled when form state is invalid (empty date)', () => {
+    const mockDispatch = jest.fn();
+    const mockSubmit = jest.fn();
+    render(<BookingForm availableTimes={["17:00", "18:00"]} dispatch={mockDispatch} submitForm={mockSubmit} />);
+
+    // Because the initial state of 'date' is an empty string, the form is invalid.
+    const submitButton = screen.getByText("Confirm Reservation");
+    
+    // Assert the disabled attribute is present
+    expect(submitButton).toBeDisabled();
+});
+
+// Test 7: React Validation - Valid State
+test('Submit button is enabled when all required fields are filled correctly', () => {
+    const mockDispatch = jest.fn();
+    const mockSubmit = jest.fn();
+    render(<BookingForm availableTimes={["17:00", "18:00"]} dispatch={mockDispatch} submitForm={mockSubmit} />);
+
+    // Get the inputs
+    const dateInput = screen.getByLabelText("Choose Date");
+    const submitButton = screen.getByText("Confirm Reservation");
+
+    // Form starts disabled
+    expect(submitButton).toBeDisabled();
+
+    // Simulate user selecting a valid date
+    fireEvent.change(dateInput, { target: { value: '2026-10-10' } });
+
+    // The other fields (time, guests, occasion) have valid default states in our component.
+    // Assert the button is now enabled
+    expect(submitButton).not.toBeDisabled();
 });
